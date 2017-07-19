@@ -4,18 +4,8 @@ import(
 	"gopkg.in/telegram-bot-api.v4"
 	"log"
 	"strings"
-	"bytes"
 	"strconv"
 )
-
-func join(a, b string) string {
-	var buffer bytes.Buffer
-
-	buffer.WriteString(a)
-	buffer.WriteString(b)
-
-	return buffer.String()
-}
 
 func main() {
 	bot, err := tgbotapi.NewBotAPI("Token")
@@ -43,7 +33,7 @@ func main() {
 			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "@cid_bot was built by phpfs and its source code is open sourced on github.com/phpfs/cid_bot!")
 			bot.Send(msg)
 		}else{
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, join("Your ChatID is:\n\n", strconv.Itoa(int(update.Message.Chat.ID))))
+			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Your ChatID is:\n\n" + strconv.Itoa(int(update.Message.Chat.ID)))
 			bot.Send(msg)
 		}
 	}
