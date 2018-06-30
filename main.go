@@ -56,7 +56,7 @@ func main() {
 	for update := range updates {
 		log.Println("--> Received message!")
 		if(strings.Contains(update.Message.Text, "/start")){
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Welcome to @cid_bot!\n\nStart by querying your Telegram Chat_ID:\n/chatid\n\nIf you want to know something about this bot, send:\n/about\n\nGreetings, phpfs")
+			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Welcome to @cid_bot!\n\nStart by querying your Telegram Chat_ID:\n/chatid\n\nIf you want to know a little more about this bot, send:\n/about\n\nGreetings, phpfs")
 			bot.Send(msg)
 		}else if(strings.Contains(update.Message.Text, "/about")){
 			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "@cid_bot was built by phpfs and its source code is open sourced on github.com/phpfs/cid_bot. Currently, @cid_bot serves you from Heroku :)")
