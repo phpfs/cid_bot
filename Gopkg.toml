@@ -24,6 +24,11 @@
 #   go-tests = true
 #   unused-packages = true
 
+[metadata.heroku]
+  root-package = "github.com/phpfs/cid_bot"
+  go-version = "1.10.2"
+  install = [ "./..." ]
+
 
 [[constraint]]
   name = "gopkg.in/telegram-bot-api.v4"
