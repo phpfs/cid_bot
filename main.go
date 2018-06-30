@@ -54,6 +54,7 @@ func main() {
 	go http.ListenAndServe("0.0.0.0:" + port, nil)
 
 	for update := range updates {
+		log.Println("--> Received message!")
 		if(strings.Contains(update.Message.Text, "/start")){
 			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Welcome to @cid_bot!\n\nStart by querying your Telegram Chat_ID:\n/chatid\n\nIf you want to know something about this bot, send:\n/about\n\nGreetings, phpfs")
 			bot.Send(msg)
