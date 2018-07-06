@@ -55,15 +55,22 @@ func main() {
 
 	for update := range updates {
 		log.Println("--> Received message!")
+
+		var msg tgbotapi.MessageConfig
+
 		if(strings.Contains(update.Message.Text, "/start")){
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Welcome to @cid_bot!\n\nStart by querying your Telegram Chat_ID:\n/chatid\n\nIf you want to know a little more about this bot, send:\n/about\n\nGreetings, phpfs")
-			bot.Send(msg)
+			msg = tgbotapi.NewMessage(update.Message.Chat.ID, "Welcome to @cid_bot!\n\nYour ChatID is:\n<b>" + strconv.Itoa(int(update.Message.Chat.ID)) + "</b>\n\nIf you want to know a little more about this bot, send:\n/about\n\nGreetings, phpfs")
 		}else if(strings.Contains(update.Message.Text, "/about")){
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "@cid_bot was built by phpfs and its source code is open sourced on github.com/phpfs/cid_bot. Currently, @cid_bot serves you from Heroku :)")
-			bot.Send(msg)
+			msg = tgbotapi.NewMessage(update.Message.Chat.ID, "@cid_bot was built by phpfs and its source code is open sourced on github.com/phpfs/cid_bot. Currently, @cid_bot serves you from Heroku :)")
 		}else{
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Your ChatID is:\n\n" + strconv.Itoa(int(update.Message.Chat.ID)))
-			bot.Send(msg)
+			msg = tgbotapi.NewMessage(update.Message.Chat.ID, "Your ChatID is:\n<b>" + strconv.Itoa(int(update.Message.Chat.ID)) + "</b>\n\nChatIDs normally don't change, but you can ask me at any time with /chatid what your current ChatID is :)")
+		}
+		
+		msg.ParseMode = "HTML"
+		_, err := bot.Send(msg)
+		
+		if err != nil {
+			log.Println("There was error sending the last message!", err)
 		}
 	}
 }
