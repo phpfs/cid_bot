@@ -68,7 +68,7 @@ func main() {
 		var msg tgbotapi.MessageConfig
 
 		if strings.Contains(update.Message.Text, "/start") {
-			msg = tgbotapi.NewMessage(update.Message.Chat.ID, "Welcome to @cid_bot!\n\nYour ChatID is:\n<b>"+strconv.Itoa(int(update.Message.Chat.ID))+"</b>\n\nIf you want to know a little more about this bot, send:\n/about\n\nGreetings, phpfs")
+			msg = tgbotapi.NewMessage(update.Message.Chat.ID, "Welcome to @cid_bot!\n\nYour ChatID is: <b>"+strconv.Itoa(int(update.Message.Chat.ID))+"</b>\n\nIf you want to know a little more about this bot, send /about")
 		} else if strings.Contains(update.Message.Text, "/about") {
 			msg = tgbotapi.NewMessage(update.Message.Chat.ID, "@cid_bot was built by phpfs and its source code is open sourced on github.com/phpfs/cid_bot. Currently, @cid_bot serves you from Heroku :)")
 		} else {
