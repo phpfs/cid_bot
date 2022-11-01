@@ -70,7 +70,7 @@ func main() {
 		if strings.Contains(update.Message.Text, "/start") {
 			msg = tgbotapi.NewMessage(update.Message.Chat.ID, "Welcome to @cid_bot!\n\nYour ChatID is: <b>"+strconv.Itoa(int(update.Message.Chat.ID))+"</b>\n\nIf you want to know a little more about this bot, send /about")
 		} else if strings.Contains(update.Message.Text, "/about") {
-			msg = tgbotapi.NewMessage(update.Message.Chat.ID, "@cid_bot was built by phpfs and its source code is open sourced on github.com/phpfs/cid_bot. Currently, @cid_bot serves you from Heroku :)")
+			msg = tgbotapi.NewMessage(update.Message.Chat.ID, "@cid_bot was built by phpfs and its source code is open sourced on github.com/phpfs/cid_bot.")
 		} else {
 			msg = tgbotapi.NewMessage(update.Message.Chat.ID, "Your ChatID is:\n<b>"+strconv.Itoa(int(update.Message.Chat.ID))+"</b>\n\nChatIDs normally don't change, but you can ask me at any time with /chatid what your current ChatID is :)")
 		}

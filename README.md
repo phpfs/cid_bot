@@ -1,5 +1,5 @@
 # cid_bot
-Telegram @cid_bot to retrieve your ChatID hosted on Heroku :)
+Telegram @cid_bot to retrieve your ChatID hosted on Fly.io :)
 
 ## Usage
 ### Personal Chats
